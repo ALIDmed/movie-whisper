@@ -1,0 +1,10 @@
+flask
+pandas
+numpy
+beautifulsoup4
+tmdbv3api
+requests
+pickle
+nltk
+re
+string
