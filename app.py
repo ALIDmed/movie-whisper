@@ -5,7 +5,6 @@ from tmdbv3api import TMDb
 from tmdbv3api import Movie
 import requests
 import pickle
-from flask_cors import CORS
 import nltk
 from nltk.corpus import stopwords
 from bs4 import BeautifulSoup
@@ -13,20 +12,15 @@ import re
 import string
 
 app = Flask(__name__)
-CORS(app, resources={r"/allmovies": {"origins": "http://localhost:5173"}})
-CORS(app, resources={r"/reviews": {"origins": "http://localhost:5173"}})
-CORS(app, resources={r"/recommend": {"origins": "http://localhost:5173"}})
+similarity = pickle.load(open('./models/similarity.pkl', 'rb'))
 
-def load_similarity():
+def load_data():
     df = pd.read_csv('./data/final_data.csv')
     df['movie_id'] = df['movie_id'].astype(str).str.split('.').str[0]
-    similarity = pickle.load(open('./models/similarity.pkl', 'rb'))
-
-    return df,similarity
+    return df
 
 def recommend_movies(movie_id, max_results=15):
-    df, similarity = load_similarity()
-
+    df = load_data()
     if isinstance(max_results, str):
         max_results = int(max_results) 
     if movie_id not in df['movie_id'].unique():
@@ -101,7 +95,7 @@ def get_movie_reviews(movie_id, max_results:int=10):
 
 @app.route('/allmovies', methods=['GET'])
 def allmovies():
-    df = pd.read_csv('./data/final_data.csv')
+    df = load_data()
     movies = df.loc[:, 'movie_title'].str.title().tolist()
     return jsonify(movies), 200
 
