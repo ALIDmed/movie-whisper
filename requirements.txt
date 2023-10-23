@@ -8,3 +8,4 @@ pickle
 nltk
 re
 string
+gunicorn
