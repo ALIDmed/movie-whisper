@@ -4,5 +4,5 @@ numpy
 beautifulsoup4
 tmdbv3api
 requests
-nltk
 gunicorn
+nltk
