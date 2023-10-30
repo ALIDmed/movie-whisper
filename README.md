@@ -39,7 +39,7 @@ Movie Whisper is a web app that provides movie recommendations using AI-based co
 ```
 4. Get tmdb API key
 
-Create an account in https://www.themoviedb.org/, click on the `API` link from the left hand sidebar in your account settings and fill all the details to apply for API key. If you are asked for the website URL, just give "NA" if you don't have one. You will see the API key in your `API` sidebar once your request is approved. then replace your apikey in app.py `API_KEY` and client components `apiKey`
+Create an account in https://www.themoviedb.org/, click on the `API` link from the left hand sidebar in your account settings and fill all the details to apply for API key. If you are asked for the website URL, just give "NA" if you don't have one. You will see the API key in your `API` sidebar once your request is approved. then replace your apikey in app.py `API_KEY` and also in client components `apiKey`
 
 5. Start the server
 
