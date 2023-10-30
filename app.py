@@ -70,7 +70,7 @@ def preditct_sentiment(text:str, transformer, model):
 
 def get_movie_reviews(movie_id, max_results:int=10):
 
-    API_KEY = '4c225c866aa84f4ef450043654ec9e56' 
+    API_KEY = '' 
     url = f'https://api.themoviedb.org/3/movie/{movie_id}/reviews?api_key={API_KEY}'
     response = requests.get(url)
     if response.status_code == 404:
